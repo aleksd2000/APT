@@ -1,2 +1,0 @@
-
-            8)      if [ "${dep[7]}"  != "" ]; then $cleverecho "Depenendency Name: ${dep[7]}\n"; $cleverecho "Do you wish to install this?: "; read subselection; case $subselection in Yes|yes|Y|y) if [ "${depmethod[7]}" = "apt" ]; then echo "${depfilename[7]} "; echo "${depmethod[7]} ${depsource[7]}"; read; fi; if [ "${depmethod[7]}" = "curl" ]; then echo "${depfilename[27]} not supported yet"; read; fi;; No|no|N|n)   echo "ok no worries"; read;; esac; fi;;

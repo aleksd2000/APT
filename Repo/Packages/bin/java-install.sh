@@ -1,1 +1,0 @@
-sudo add-apt-repository ppa:linuxuprising/java && sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 73C3DB2A && sudo apt update && sudo apt-get install oracle-java17-installer --install-recommends
