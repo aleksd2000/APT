@@ -1,0 +1,28 @@
+[Match]
+Name=eth0
+
+[Network]
+
+Address=0.0.0.0/24
+Address=0.0.0.0/24
+Gateway=127.0.0.1
+
+# Default IPv6 Address:
+Address=0.0.0.0/64
+# Default IPv6 Gateway:
+Gateway=fe80::1
+
+# Customer IPv6 Pool One:
+
+Gateway=fe80::1
+
+# Customer IPv6 Pool Two:
+
+
+
+# Customer IPv6 Pool Three:
+
+
+
+# Customer IPv6 Pool Four:
+

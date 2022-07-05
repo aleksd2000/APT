@@ -1,0 +1,44 @@
+            else
+                $cleverecho "$dep3 not found. Please approve installation.\n"
+                $cleverecho "Use curl instead of apt-get?: "
+                 read curlyesorno
+                 case $curlyesorno
+                    in
+                        yes) curl -fsSL https://code-server.dev/install.sh | sh -s --
+                             ;;
+                        no) sudo apt-get install "$dep3"
+                             ;;
+                esac
+
+
+	$cleverecho "Installable Programs:\n\n"
+        printf "%11s  %-30s %-15s %-15s %-15s \n\n" "Option" "Package" "Status" "Install Method" "Install Source"
+        for (( xx=0 ; xx<$dep_count ; xx++ )); do
+          if [ "$dep[$xx]" != "" ];    then depstate[$xx]="Installed"; dpkg-query -s "${dep[$xx]}"   &> /dev/null || depstate[$xx]="Not Installed"; printf "%11s. %-30s %-15s %-15s %-15s \n" "$((xx+1))" "${dep[$xx]}" "${depstate[$xx]}" "${depmethod[$xx]}" "${depsource[$xx]}"; fi;
+        done
+
+		$cleverecho "\n";
+		$cleverecho "Enter Selection [1-$dep_count or q to exit]: "
+		read selection
+		
+		case $selection in
+          1)  if [ "${dep[0]}" != "" ]
+                then
+                  install_toggle "${dep[0]}" "${depstate[0]}"
+              fi ;;
+          esac
+          
+# Dependencies list
+     dep1="git"                  # Git (We probably won't need this line ...)                    			[git 1:2.20.1-2+deb10u3]
+     dep2="screen"               # Screen (to Background processes and restore later)    					[screen 4.6.2-3+deb10u1]
+     dep3="code-server"          # Code-Server                                           					[code-server 3.9.2]
+     dep4="fail2ban"             # fail2ban                                                                   [fail2ban 0.10.2-2.1]
+     dep5="shc"                  # Generic Shell Script Compiler                                 			[shc 3.9.6]
+     dep6="gh"                   # Github gh CLI					                                        [gh version 2.4.0 (2021-12-21)]
+     dep7="rclone"               # Rclone                                                                     [rclone v1.53.3-DEV]
+
+# Delete this begin
+	$pending
+	$cleverecho "If this is not what you expected please remove the lines between \"delete this begin and delete this end\" in source code\n"
+exit 0;
+# Delete this end

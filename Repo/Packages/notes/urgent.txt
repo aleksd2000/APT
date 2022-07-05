@@ -1,0 +1,52 @@
+# need to create script to ban ip's looking for agro-deals.com
+
+# sudo iptables -A INPUT -s xxx.xxx.xxx.xxx -j REJECT
+# sudo iptables -A INPUT -s xxx.xxx.xxx.xxx -j REJECT
+
+# cat /var/log/daemon.log | awk -F '[\/ ]+' '/client / {print $8}' | less > new/addresses.cfg-`hostname`
+
+# Read in a file			:r new/pending.in
+# Remove text left over from awk	:.,$s/signal//
+# Remove all empty lines		:g/^$/d
+# sorts the contents of the file    	:sort u
+# removes everything after  #        	:%s/[^#]*$//
+# Add to the beginning of each line	:%s/^/TEXT /
+
+# Read in a file				:r new/pending.in
+# Remove text left over from awk		:.,$s/signal//
+# Remove all empty lines			:g/^$/d
+# removes everything after  #        		:%s/[^#]*$//
+# sorts the contents of the file    		:sort u
+# removes duplicates                		:%s/^\(.*\)\(\n\1\)\+$/\1/
+# removes the # and replaces it with -j REJECT	:.,$s/#/ -j REJECT /
+# Add to the beginning of each line		:%s/^/sudo iptables -A INPUT -s /
+# saves the contents of the file to ???.sh	:w! new/toban.sh
+
+# Empty the file				:%d
+# Read in a file				:r new/pending.in
+# Remove text left over from awk		:.,$s/signal//
+# Remove all empty lines			:g/^$/d
+# removes everything after  #        		:%s/[^#]*$//
+# sorts the contents of the file    		:sort u
+# removes duplicates                		:%s/^\(.*\)\(\n\1\)\+$/\1/
+# removes the # and replaces it with -j REJECT	:.,$s/#/ /
+# Add to the beginning of each line		:%s/^/sudo iptables -L -n | grep /
+# saves the contents of the file to ???.sh	:w! new/tocheck.sh
+
+ban() {
+ sudo iptables -A INPUT -s 162.158.201.64 	-j REJECT
+ sudo iptables -A INPUT -s 162.158.85.82	-j REJECT
+ sudo iptables -A INPUT -s 162.158.201.64	-j REJECT
+ sudo iptables -A INPUT -s 195.2.240.100	-j REJECT
+ sudo iptables -A INPUT -s 172.217.40.4		-j REJECT
+ sudo iptables -A INPUT -s 3.238.85.89		-j REJECT
+}
+
+check() {
+ sudo iptables -L -n | grep 162.158.201.64 
+ sudo iptables -L -n | grep 162.158.85.82	
+ sudo iptables -L -n | grep 162.158.201.64
+ sudo iptables -L -n | grep 195.2.240.100	
+ sudo iptables -L -n | grep 172.217.40.4	
+ sudo iptables -L -n | grep 3.238.85.89	
+}

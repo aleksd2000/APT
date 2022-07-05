@@ -7,7 +7,8 @@ sudo dpkg-dev apt-get install -y gcc gpg dpkg-dev libc6-dev
 
 #######
 
-Place all custom scripts in ~/Remote/Branches/testing-aleks/APT-Packages/Repo/aleksd2000-scripts_0.0.0.0-1/amd64/opt/bin
+Place all custom scripts in 
+    ~/Remote/Branches/testing-aleks/APT-Packages/Repo/aleksd2000-scripts_0.0.0.0-1/amd64/opt/bin
 
 then
 
