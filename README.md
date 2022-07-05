@@ -1,7 +1,7 @@
 # APT
 Custom Apt Repository
 
-custom packages for apt repo: gpg gcc depkg-dev libc6-dev
+custom packages for apt repo: gpg gcc dpkg-dev libc6-dev
 
 sudo dpkg-dev apt-get install -y gcc gpg dpkg-dev libc6-dev
 
